@@ -1,0 +1,57 @@
+.tablist-component {
+    .nav-link {
+        .unsaved-icon {
+            display: none;
+            background: #d9534f;
+            width: 10px;
+            height: 10px;
+        }
+
+        .close-icon {
+            visibility: hidden;
+        }
+
+        &:hover {
+            .unsaved-icon {
+                display: none;
+            }
+
+            .close-icon {
+                visibility: visible;
+            }
+        }
+
+        &.active {
+            .unsaved-icon {
+                display: none;
+            }
+
+            .close-icon {
+                visibility: visible;
+            }
+        }
+
+        &.withUnsaved {
+            .unsaved-icon {
+                display: inline-block;
+            }
+
+            .close-icon {
+                display: none;
+            }
+
+            &:hover {
+                .unsaved-icon {
+                    display: none;
+                }
+
+                .close-icon {
+                    visibility: visible;
+                    display: inline-block;
+                }
+            }
+        }
+
+
+    }
+}
