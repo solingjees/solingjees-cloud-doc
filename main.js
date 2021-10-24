@@ -1,5 +1,5 @@
 const  MenuTemplate  = require('./src/assets/menuTemplate')
-// const { autoUpdater } = require('electron-updater')
+const { autoUpdater } = require('electron-updater')
 const { app, Menu, ipcMain, dialog } = require('electron')
 const path = require('path')
 const Store = require('electron-store')
@@ -16,7 +16,29 @@ let settingsWindow
 
 app.on('ready', () => {
   // check new version
-  // autoUpdater.auto
+  autoUpdater.autoDownload = false
+  autoUpdater.checkForUpdatesAndNotify() //打包完成的包中才能运行
+  autoUpdater.on('error',(error)=>{
+    dialog.showErrorBox('更新发生错误', error === null ? 'unknown': JSON.stringify(error))
+  })
+  autoUpdater.on('update-available',()=>{
+    dialog.showMessageBox({
+      type:'info',
+      title:'发现新版本',
+      message:'发现新版本，是否现在更新?',
+      button:['是','稍后考虑']
+    },(res)=>{
+      if(res.response === 0){
+         autoUpdater.downloadUpdate()
+      }
+    })
+  })
+  autoUpdater.on('update-not-available',()=>{
+    dialog.showMessageBox({
+      title:'没有新版本',
+      message:'当前已经是最新版本'
+    })
+  })
 
   // setup the top menu
   let menu = Menu.buildFromTemplate(MenuTemplate)

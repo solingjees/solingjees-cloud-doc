@@ -1,6 +1,6 @@
 {
   "name": "cloud-doc",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "private": true,
   "main": "main.js",
   "author": {
@@ -46,7 +46,7 @@
     ],
     "mac": {
       "category": "public.app-category.productivity",
-      "artifactName": "${productName}-${version}-${arch}.${ext}"
+      "artifactName": "${name}-${version}-${arch}.${ext}"
     },
     "dmg": {
       "background": "./src/assets/appdmg.png",
@@ -76,7 +76,7 @@
         "nsis"
       ],
       "icon": "./src/assets/icon.ico",
-      "artifactName": "${productName}-${version}-${arch}.${ext}",
+      "artifactName": "${name}-${version}-${arch}.${ext}",
       "publisherName": "solingjees"
     },
     "nsis": {
